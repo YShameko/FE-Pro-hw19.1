@@ -39,6 +39,8 @@ async function getWeatherData(url, mode = '') {
 }
 
 function updateWeather(cityName) {
+    const weatherWidget = document.querySelector('.weather-widget');
+    const weatherInfo = document.querySelector('.weather-text-info');
     const jsonWeatherPromise = getWeatherData(API_URL + `&q=${cityName}`);
     const htmlWeatherPromise = getWeatherData(API_URL + `&q=${cityName}`, 'html');
 
@@ -68,10 +70,8 @@ function updateWeather(cityName) {
 }
 
 // ============================================================================================================
-const weatherWidget = document.querySelector('.weather-widget');
-const weatherInfo = document.querySelector('.weather-text-info');
 const citiesList = document.getElementById('cities-list');
-const weatherBtn = document.querySelector('.weather-btn');
+const weatherBtn = document.querySelector('.weather-refresh-btn');
 
 citiesList.addEventListener('change', () => {
     const selectedCity = citiesList.value;

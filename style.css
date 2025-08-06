@@ -34,7 +34,7 @@ h2 {
     margin: 0;
 }
 
-.weather-btn {
+.weather-refresh-btn {
     cursor: pointer;
     margin: 16px 60px;
 }
