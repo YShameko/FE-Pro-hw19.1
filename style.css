@@ -1,0 +1,40 @@
+body {
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+p {
+    font-size: 20px;
+    line-height: 30px;
+}
+
+pre {
+    font-size: larger;
+}
+
+h2 {
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.weather-block {
+    display: flex;
+}
+
+.weather-widget {
+    padding: 16px;
+}
+
+.weather-text-info {
+    padding: 16px 24px;
+}
+
+.weather-text-info > p {
+    font-size: 15px;
+    line-height: 1.5;
+    margin: 0;
+}
+
+.weather-btn {
+    cursor: pointer;
+    margin: 16px 60px;
+}

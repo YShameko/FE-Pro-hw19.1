@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>HW 19.1</title>
+</head>
+<body>
+    <h1>Homework: 19.1</h1>
+    <p>
+    <pre>
+    <h2>Віджет погоди</h2>
+    За допомогою запиту вивести виджет погоди. Ресурс API https://openweathermap.org/current
+
+    Також потрібно додати кнопку оновлення данних.
+    </pre>
+    </p>
+    <hr><br>
+    Обери місто, в якому ти хочеш подивитися погоду: 
+    <select name="cities-list" id="cities-list">
+        <option value="Kyiv">Київ</option>
+        <option value="Lviv">Львів</option>
+        <option value="Odesa">Одеса</option>
+        <option value="Kharkiv">Харків</option>
+    </select>
+    <div class="weather-block">
+        <div class="weather-widget">
+        </div>
+        <div class="weather-text-info">
+
+        </div>        
+    </div>
+    <button class="weather-btn">оновити</button>
+
+    <script src="./index.js"></script>
+</body>
+</html>
