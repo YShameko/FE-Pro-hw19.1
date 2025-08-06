@@ -2,6 +2,8 @@
 
 const API_KEY = '11ef37b129d506c8908c384c6f64204b';
 const API_URL = `https://api.openweathermap.org/data/2.5/weather?appid=${API_KEY}&lang=uk&units=metric`;
+const WEATHER_WIDGET_CLASS = '.weather-widget';
+const WEATHER_TEXT_INFO_CLASS = '.weather-text-info';
 
 // -----------------------------------------------------------------------------------------------------------------
 //
@@ -39,8 +41,8 @@ async function getWeatherData(url, mode = '') {
 }
 
 function updateWeather(cityName) {
-    const weatherWidget = document.querySelector('.weather-widget');
-    const weatherInfo = document.querySelector('.weather-text-info');
+    const weatherWidget = document.querySelector(WEATHER_WIDGET_CLASS);
+    const weatherInfo = document.querySelector(WEATHER_TEXT_INFO_CLASS);
     const jsonWeatherPromise = getWeatherData(API_URL + `&q=${cityName}`);
     const htmlWeatherPromise = getWeatherData(API_URL + `&q=${cityName}`, 'html');
 
