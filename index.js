@@ -48,20 +48,27 @@ function updateWeather(cityName) {
 
     jsonWeatherPromise.then(data => {
         if (data) {
-            weatherInfo.innerHTML = '<p>Детальніше про погоду: <b>' + data.name + ', ' + data.sys.country + '</b></p>';
-            weatherInfo.innerHTML += `<p>Поточна температура: ${data.main.temp}°C </p>`;
-            weatherInfo.innerHTML += `<p>Відчувається як: ${data.main.feels_like}°C </p>`;
-            weatherInfo.innerHTML += '<p>Хмарність: ' + data.weather[0].description + '</p>';
-            weatherInfo.innerHTML += '<p>Швидкість вітру: ' + data.wind.speed + ' м/с, пориви до: ' + data.wind.gust + 'м/с</p>';
+        const { name, timezone, sys, main, wind, weather } = data;
+        const { country, sunrise, sunset } = sys;
+        const { temp, feels_like } = main;
+        const { speed, gust } = wind;
+        const { description } = weather[0];
 
-            const sunriseDate = new Date((data.sys.sunrise + data.timezone) * 1000);
-            const sunsetDate = new Date((data.sys.sunset + data.timezone) * 1000);
-            weatherInfo.innerHTML += '<p>Схід сонця: ' + sunriseDate.toUTCString().slice(-12, -7) 
-                                    + ' захід: ' + sunsetDate.toUTCString().slice(-12, -7) + '</p>';
-            const currentDate = new Date().toLocaleString();
-            weatherInfo.innerHTML += '<p style="font-size: x-small;">Данні було оновлено: <b>' 
-                                + currentDate.slice(-8) + '</b></p>';
-        }
+        weatherInfo.innerHTML = `<p>Детальніше про погоду: <b>${name}, ${country}</b></p>`;
+        weatherInfo.innerHTML += `<p>Поточна температура: ${temp}°C </p>`;
+        weatherInfo.innerHTML += `<p>Відчувається як: ${feels_like}°C </p>`;
+        weatherInfo.innerHTML += `<p>Хмарність: ${description}</p>`;
+        weatherInfo.innerHTML += `<p>Швидкість вітру: ${speed} м/с, пориви до: ${gust} м/с</p>`;
+
+        const sunriseDate = new Date((sunrise + timezone) * 1000);
+        const sunsetDate = new Date((sunset + timezone) * 1000);
+        weatherInfo.innerHTML += `<p>Схід сонця: ${sunriseDate.toUTCString().slice(-12, -7)} `
+                             + `захід: ${sunsetDate.toUTCString().slice(-12, -7)}</p>`;
+        
+        const currentDate = new Date().toLocaleString();
+        weatherInfo.innerHTML += `<p style="font-size: x-small;">Данні було оновлено: <b>`
+                             + `${currentDate.slice(-8)}</b></p>`;
+    }
     });
 
     htmlWeatherPromise.then(data => {
